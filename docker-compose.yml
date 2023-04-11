@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  my-app:
+    build: docker-app
+    ports:
+      - 8080:8080
+    environment:
+      spring.data.mongodb.host: my-mongo
+    depends_on:
+      - my-mongo
+  my-mongo:
+    image: mongo
+    ports:
+      - 27017:27017
